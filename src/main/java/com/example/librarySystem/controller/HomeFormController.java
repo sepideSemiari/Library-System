@@ -1,19 +1,18 @@
-package controller;
+package com.example.librarySystem.controller;
 
-import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 
 public class HomeFormController {
@@ -43,19 +42,19 @@ public class HomeFormController {
 
             switch (icon.getId()) {
                 case "member":
-                    root = FXMLLoader.load(this.getClass().getResource("/View/MembersFormView.fxml"));
+                    root = FXMLLoader.load(new File("E:\\javaCode\\Project\\LibrarySystem\\LibrarySystem\\src\\main\\resources\\com\\example\\librarySystem\\MembersFormView.fxml").toURI().toURL());
                     break;
                 case "books":
-                    root = FXMLLoader.load(this.getClass().getResource("/View/BooksFormView.fxml"));
+                    root = FXMLLoader.load(new File("E:\\javaCode\\Project\\LibrarySystem\\LibrarySystem\\src\\main\\resources\\com\\example\\librarySystem\\BooksFormView.fxml").toURI().toURL());
                     break;
-                case "issue":
-                    root = FXMLLoader.load(this.getClass().getResource("/View/BookIssueFormView.fxml"));
+                case "borrow":
+                    root = FXMLLoader.load(new File("E:\\javaCode\\Project\\LibrarySystem\\LibrarySystem\\src\\main\\resources\\com\\example\\librarySystem\\BooksBorrowFormView.fxml").toURI().toURL());
                     break;
-                case "bk_return":
-                    root = FXMLLoader.load(this.getClass().getResource("/View/BookReturnFormView.fxml"));
+                case "books_return":
+                    root = FXMLLoader.load(new File("E:\\javaCode\\Project\\LibrarySystem\\LibrarySystem\\src\\main\\resources\\com\\example\\librarySystem\\BookReturnFormView.fxml").toURI().toURL());
                     break;
-                case "bk_search":
-                    root = FXMLLoader.load(this.getClass().getResource("/View/BookSearchFormView.fxml"));
+                case "books_search":
+                    root = FXMLLoader.load(new File("E:\\javaCode\\Project\\LibrarySystem\\LibrarySystem\\src\\main\\resources\\com\\example\\librarySystem\\BookSearchFormView.fxml").toURI().toURL());
                     break;
             }
 
@@ -73,7 +72,6 @@ public class HomeFormController {
             }
         }
     }
-
 
 
 }

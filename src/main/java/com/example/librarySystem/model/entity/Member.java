@@ -1,4 +1,4 @@
-package com.example.librarymanagementsystem.model.entity;
+package com.example.librarySystem.model.entity;
 
 public class Member {
     private String id;

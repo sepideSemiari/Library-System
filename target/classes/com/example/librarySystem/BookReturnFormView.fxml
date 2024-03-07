@@ -20,15 +20,11 @@
             fx:controller="com.example.librarySystem.controller.BookReturnController">
     <children>
 
-        <Pane layoutY="1.0" prefHeight="600.0" prefWidth="12.0" style="-fx-background-color: #6b6b65;"/>
-        <Pane layoutX="12.0" layoutY="190.0" prefHeight="411.0" prefWidth="12.0"
-              style="-fx-background-color: #ded3a9;"/>
-        <Pane layoutX="574.0" layoutY="183.0" prefHeight="411.0" prefWidth="12.0"
-              style="-fx-background-color: #ded3a9;"/>
+        <Pane layoutY="1.0" prefHeight="600.0" prefWidth="12.0" style="-fx-background-color: #6b6b65;" />        <Pane layoutX="12.0" layoutY="190.0" prefHeight="411.0" prefWidth="12.0" style="-fx-background-color: #ded3a9;" />
+        <Pane layoutX="574.0" layoutY="183.0" prefHeight="411.0" prefWidth="12.0" style="-fx-background-color: #ded3a9;" />
 
-        <Pane layoutX="12.0" layoutY="190.0" prefHeight="411.0" prefWidth="12.0"
-              style="-fx-background-color: #ded3a9;"/>
-        <Pane layoutX="588.0" layoutY="1.0" prefHeight="600.0" prefWidth="12.0" style="-fx-background-color: #6f7275;"/>
+        <Pane layoutX="12.0" layoutY="190.0" prefHeight="411.0" prefWidth="12.0" style="-fx-background-color: #ded3a9;" />
+        <Pane layoutX="588.0" layoutY="1.0" prefHeight="600.0" prefWidth="12.0" style="-fx-background-color: #6f7275;" />
         <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="513.0" layoutY="25.0" onMouseClicked="#img_back"
                    pickOnBounds="true" preserveRatio="true">
             <image>
@@ -49,7 +45,7 @@
         </Text>
         <Pane layoutX="590.0" prefHeight="600.0" prefWidth="11.0" style="-fx-background-color: #8f8686;"/>
         <TextField fx:id="txt_borrow_date" layoutX="141.0" layoutY="202.0" prefHeight="25.0" prefWidth="318.0"
-                   promptText="Borrow Date"/>
+                   promptText="Issue Date"/>
         <TextField fx:id="txt_fine" layoutX="141.0" layoutY="275.0" prefHeight="25.0" prefWidth="318.0"
                    promptText="Fine"/>
         <DatePicker fx:id="txt_return_date" layoutX="141.0" layoutY="238.0" prefHeight="28.0" prefWidth="330.0"

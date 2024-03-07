@@ -1,2 +1,8 @@
-package com.example.librarySystem.controller;public class BookSearchController {
+package com.example.librarySystem.controller;
+
+import javafx.scene.input.MouseEvent;
+
+public class BookSearchController {
+    public void image_back(MouseEvent mouseEvent) {
+    }
 }

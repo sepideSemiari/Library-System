@@ -1,26 +1,27 @@
-package com.example.librarymanagementsystem.model.entity;
+package com.example.librarySystem.model.entity;
 
-import java.sql.Timestamp;
 
-public class BookIssue {
-    private String issueId;
+import java.security.Timestamp;
+
+public class BorrowBook {
+    private String borrowId;
     private Timestamp date;
     private String memberId;
     private String bookId;
 
-    public BookIssue(String issueId, Timestamp date, String memberId, String bookId) {
-        this.issueId = issueId;
+    public BorrowBook(String borrowId, Timestamp date, String memberId, String bookId) {
+        this.borrowId = borrowId;
         this.memberId = memberId;
         this.bookId = bookId;
         this.date=date;
     }
 
-    public String getIssueId() {
-        return issueId;
+    public String getBorrowId() {
+        return borrowId;
     }
 
     public void setIssueId(String issueId) {
-        this.issueId = issueId;
+        this.borrowId = borrowId;
     }
 
     public Timestamp getDate() {
@@ -50,7 +51,7 @@ public class BookIssue {
     @Override
     public String toString() {
         return "BookIssue{" +
-                "issueId='" + issueId + '\'' +
+                "issueId='" + borrowId + '\'' +
                 ", date='" + date + '\'' +
                 ", memberId='" + memberId + '\'' +
                 ", bookId='" + bookId + '\'' +
