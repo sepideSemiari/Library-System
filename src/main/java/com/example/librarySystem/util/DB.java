@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class DB {
     public static ArrayList<Member> members =new ArrayList<>();
     public static ArrayList<Book> books=new ArrayList<>();
-    public  static ArrayList<BorrowBook> issuedBook=new ArrayList<>();
-    public static ArrayList<BookReturn> returnedBook=new ArrayList<>();
+    public  static ArrayList<BorrowBook> borrowBooks=new ArrayList<>();
+    public static ArrayList<BookReturn> returnedBooks=new ArrayList<>();
 
 }

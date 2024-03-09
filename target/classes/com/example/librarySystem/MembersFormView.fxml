@@ -38,8 +38,8 @@
         <TextField fx:id="member_address" layoutX="147.0" layoutY="207.0" prefHeight="25.0" prefWidth="311.0" promptText="Address :" />
         <TextField fx:id="member_number" layoutX="147.0" layoutY="249.0" prefHeight="25.0" prefWidth="311.0" promptText="Contact Number :" />
 
-        <Button fx:id="btn_new" layoutX="145.0" layoutY="296.0" onAction="#btn_new" prefHeight="29.0" prefWidth="86.0" style="-fx-background-color: #ded3a9;" text=" Add User" />
-        <Button fx:id="btn_add" layoutX="260.0" layoutY="296.0" onAction="#btn_add" prefHeight="29.0" prefWidth="86.0" style="-fx-background-color: #b7aeae;" text="Add" />
+        <Button fx:id="btn_new" layoutX="145.0" layoutY="296.0" onAction="#btn_new" prefHeight="29.0" prefWidth="86.0" style="-fx-background-color: #ded3a9;" text=" +New User" />
+        <Button fx:id="btn_add" layoutX="260.0" layoutY="296.0" onAction="#btn_add" prefHeight="29.0" prefWidth="86.0" style="-fx-background-color: #b7aeae;" text="add" />
         <Button fx:id="btn_delete" layoutX="372.0" layoutY="296.0" onAction="#btn_delete" prefHeight="29.0" prefWidth="86.0" style="-fx-background-color: #ded3a9;" text="Delete" textAlignment="CENTER" />
 
         <TableView fx:id="member_table" layoutX="70.0" layoutY="380.0" prefHeight="191.0" prefWidth="479.0">

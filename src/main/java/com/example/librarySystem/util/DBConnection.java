@@ -1,6 +1,5 @@
 package com.example.librarySystem.util;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -15,44 +14,40 @@ public class DBConnection {
         try {
             Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "12345");
-            PreparedStatement pstm = connection.prepareStatement("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' AND table_name IN ('bookdetail', 'issuetb', 'memberdetail', 'returndetail')");
+            PreparedStatement pstm = connection.prepareStatement("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' AND table_name IN ('book_detail', 'borrow_table', 'member_detail', 'return_detail')");
             ResultSet resultSet = pstm.executeQuery();
             if (!resultSet.next()) {
                 String sql = "\n" +
                         "CREATE TABLE book_detail (\n" +
-                        "  id varchar(10) NOT NULL,\n" +
-                        "  title varchar(15) DEFAULT NULL,\n" +
-                        "  author varchar(20) DEFAULT NULL,\n" +
-                        "  status varchar(20) DEFAULT NULL,\n" +
-                        "  PRIMARY KEY (id)\n" +
+                        "  id varchar(10) NOT NULL PRIMARY KEY ,\n" +
+                        "  title varchar(100)  DEFAULT null,\n" +
+                        "  author varchar(100) DEFAULT NULL,\n" +
+                        "  status varchar(100) DEFAULT NULL\n" +
                         ");\n" +
                         "\n" +
                         "CREATE TABLE member_detail (\n" +
-                        "  id varchar(10) NOT NULL,\n" +
-                        "  name varchar(50) DEFAULT NULL,\n" +
-                        "  address varchar(50) DEFAULT NULL,\n" +
-                        "  contact varchar(12) DEFAULT NULL,\n" +
-                        "  PRIMARY KEY (id)\n" +
+                        "  id varchar(10) PRIMARY KEY ,\n" +
+                        "  name varchar(100) NOT NULL,\n" +
+                        "  address varchar(100) NOT NULL,\n" +
+                        "  contact varchar(11) NOT NULL\n" +
                         ");\n" +
                         "\n" +
                         "CREATE TABLE borrow_detail (\n" +
-                        "  borrowId varchar(10) NOT NULL,\n" +
-                        "  date date DEFAULT NULL,\n" +
-                        "  memberId varchar(10) DEFAULT NULL,\n" +
-                        "  bookId varchar(10) DEFAULT NULL,\n" +
-                        "  PRIMARY KEY (borrowId),\n" +
+                        "  id varchar(10) primary key ,\n" +
+                        "  date date ,\n" +
+                        "  memberId varchar ,\n" +
+                        "  bookId varchar ,\n" +
                         "  CONSTRAINT fk_member FOREIGN KEY (memberId) REFERENCES member_detail (id),\n" +
                         "  CONSTRAINT fk_book FOREIGN KEY (bookId) REFERENCES book_detail (id)\n" +
                         ");\n" +
                         "\n" +
                         "CREATE TABLE return_detail (\n" +
-                        "  id int NOT NULL,\n" +
+                        "  id varchar(10) primary key ,\n" +
                         "  borrowDate date NOT NULL,\n" +
                         "  returnedDate date DEFAULT NULL,\n" +
                         "  fine int DEFAULT NULL,\n" +
-                        "  borrowId varchar(10),\n" +
-                        "  PRIMARY KEY (id),\n" +
-                        "  CONSTRAINT fk_issue FOREIGN KEY (issueid) REFERENCES issuetb (issueId)\n" +
+                        "  borrowId varchar,\n" +
+                        "  CONSTRAINT fk_borrow FOREIGN KEY (borrowId) REFERENCES borrow_detail (id)\n" +
                         ");\n";
                 pstm = connection.prepareStatement(sql);
                 pstm.execute();
