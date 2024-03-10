@@ -129,11 +129,14 @@ public class MemberController {
         member_name.clear();
         member_address.clear();
         member_name.clear();
-        btn_add.setText("add");
+        btn_add.setText("Add");
         member_id.setDisable(false);
+
         ResultSet resultSet = newIdQuery.executeQuery();
+
         String ids = null;
         int maxId = 0;
+
         while (resultSet.next()) {
             ids = resultSet.getString(1);
             int id = Integer.parseInt(ids.replace("M", ""));
@@ -179,12 +182,13 @@ public class MemberController {
             addToTable.setString(4, member_number.getText());
             int enteredRows = addToTable.executeUpdate();
 
-            if (enteredRows > 0)
+            if (enteredRows > 0) {
                 System.out.println("data load successful");
-            else
+            } else {
                 System.out.println("something is wrong");
-        } else {
-            if (btn_add.getText().equals("update")) {
+            }
+        }else {
+            if (btn_add.getText().equals("Update")) {
                 for (int i = 0; i < members.size(); i++) {
                     if (member_id.getText().equals(members.get(i).getId())) {
                         try {
