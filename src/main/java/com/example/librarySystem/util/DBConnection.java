@@ -28,8 +28,8 @@ public class DBConnection {
                         "CREATE TABLE member_detail (\n" +
                         "  id varchar(10) PRIMARY KEY ,\n" +
                         "  name varchar(100) NOT NULL,\n" +
-                        "  address varchar(100) NOT NULL,\n" +
-                        "  contact varchar(11) NOT NULL\n" +
+                        "  address varchar(100) Default NULL,\n" +
+                        "  contact varchar(11) Default NULL\n" +
                         ");\n" +
                         "\n" +
                         "CREATE TABLE borrow_detail (\n" +

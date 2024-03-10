@@ -64,7 +64,7 @@ public class MemberController {
     @FXML
     public void initialize() throws ClassNotFoundException {
         member_id.setDisable(true);
-        Class.forName("org.postgresql.Driver");
+
 
         //set column
         member_table.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -72,6 +72,7 @@ public class MemberController {
         member_table.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("address"));
         member_table.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("concat"));
 
+        Class.forName("org.postgresql.Driver");
         try {
             connection = DBConnection.getInstance().getConnection();
             ObservableList<Member> members = member_table.getItems();
@@ -103,7 +104,7 @@ public class MemberController {
                 try {
                     connection = null;
                     try {
-                        selectMemberId.setString(1, String.valueOf(selectedItem.getId()));
+                        selectMemberId.setString(1, selectedItem.getId());
                         ResultSet rst = selectMemberId.executeQuery();
                         if (rst.next()) {
                             member_id.setText(rst.getString(1));
@@ -113,6 +114,7 @@ public class MemberController {
                             member_id.setDisable(true);
                             btn_add.setText("Update");
                         }
+                        btn_add.setText("Update");
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
@@ -126,11 +128,12 @@ public class MemberController {
     }
 
     public void btn_new(ActionEvent actionEvent) throws SQLException {
-        member_name.clear();
-        member_address.clear();
-        member_name.clear();
         btn_add.setText("Add");
         member_id.setDisable(false);
+        member_name.clear();
+        member_address.clear();
+        member_number.clear();
+
 
         ResultSet resultSet = newIdQuery.executeQuery();
 
@@ -169,7 +172,7 @@ public class MemberController {
             Optional<ButtonType> buttonType = alert.showAndWait();
             return;
         }
-        if (!(member_name.getText().matches("^\\b([A-Za-z.]+\\s?)+$") && member_address.getText().matches("^\\b[A-Za-z0-9/,\\s]+.$") && member_number.getText().matches("\\d{10}"))) {
+        if (!(member_name.getText().matches("^\\b([A-Za-z.]+\\s?)+$") && member_address.getText().matches("^\\b[A-Za-z0-9/,\\s]+.$") && member_number.getText().matches("\\d{11}"))) {
             new Alert(Alert.AlertType.ERROR, "Entered details invalid").show();
             return;
         }
@@ -187,10 +190,10 @@ public class MemberController {
             } else {
                 System.out.println("something is wrong");
             }
-        }else {
+        } else {
             if (btn_add.getText().equals("Update")) {
-                for (int i = 0; i < members.size(); i++) {
-                    if (member_id.getText().equals(members.get(i).getId())) {
+                for (Member member : members) {
+                    if (member_id.getText().equals(member.getId())) {
                         try {
                             updateQuery.setString(1, member_name.getText());
                             updateQuery.setString(2, member_address.getText());
@@ -209,8 +212,9 @@ public class MemberController {
                         }
                     }
                 }
+                member_table.setItems(members);
             }
-            member_table.setItems(members);
+
         }
         try {
             member_table.getItems().clear();
@@ -227,7 +231,6 @@ public class MemberController {
             Optional<ButtonType> buttonType = alert.showAndWait();
             return;
         } else {
-            deleteQuery = connection.prepareStatement("DELETE  from member_detail where id=?");
             deleteQuery.setString(1, selectedItem.getId());
             int values = deleteQuery.executeUpdate();
             if (values > 0) {
