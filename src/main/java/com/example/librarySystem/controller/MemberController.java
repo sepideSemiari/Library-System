@@ -195,10 +195,10 @@ public class MemberController {
                 for (Member member : members) {
                     if (member_id.getText().equals(member.getId())) {
                         try {
-                            updateQuery.setString(1, member_name.getText());
-                            updateQuery.setString(2, member_address.getText());
-                            updateQuery.setString(3, member_number.getText());
-                            updateQuery.setString(4, member_id.getText());
+                            updateQuery.setString(1, member_id.getText());
+                            updateQuery.setString(2, member_name.getText());
+                            updateQuery.setString(3, member_address.getText());
+                            updateQuery.setString(4, member_number.getText());
                             int values = updateQuery.executeUpdate();
                             if (values > 0) {
                                 Alert alert = new Alert(Alert.AlertType.INFORMATION, "record updated", ButtonType.OK);

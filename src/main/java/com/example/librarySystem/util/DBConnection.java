@@ -33,7 +33,7 @@ public class DBConnection {
                         ");\n" +
                         "\n" +
                         "CREATE TABLE borrow_detail (\n" +
-                        "  id varchar(10) primary key ,\n" +
+                        "  borrowId varchar(10) primary key ,\n" +
                         "  date date ,\n" +
                         "  memberId varchar ,\n" +
                         "  bookId varchar ,\n" +
@@ -42,7 +42,7 @@ public class DBConnection {
                         ");\n" +
                         "\n" +
                         "CREATE TABLE return_detail (\n" +
-                        "  id varchar(10) primary key ,\n" +
+                        "  returnId varchar(10) primary key ,\n" +
                         "  borrowDate date NOT NULL,\n" +
                         "  returnedDate date DEFAULT NULL,\n" +
                         "  fine int DEFAULT NULL,\n" +
