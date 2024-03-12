@@ -22,7 +22,7 @@ public class DBConnection {
                         "  id varchar(10) NOT NULL PRIMARY KEY ,\n" +
                         "  title varchar(100)  DEFAULT null,\n" +
                         "  author varchar(100) DEFAULT NULL,\n" +
-                        "  status varchar(100) DEFAULT NULL\n" +
+                        "  status varchar(100) \n" +
                         ");\n" +
                         "\n" +
                         "CREATE TABLE member_detail (\n" +
@@ -47,7 +47,7 @@ public class DBConnection {
                         "  returnedDate date DEFAULT NULL,\n" +
                         "  fine int DEFAULT NULL,\n" +
                         "  borrowId varchar,\n" +
-                        "  CONSTRAINT fk_borrow FOREIGN KEY (borrowId) REFERENCES borrow_detail (id)\n" +
+                        "  CONSTRAINT fk_borrow FOREIGN KEY (borrowId) REFERENCES borrow_detail (borrowId)" +
                         ");\n";
                 pstm = connection.prepareStatement(sql);
                 pstm.execute();

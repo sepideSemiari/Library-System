@@ -17,7 +17,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.PickResult;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -65,91 +64,88 @@ public class BookBorrowController {
         borrow_book_table.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("memberId"));
         borrow_book_table.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("bookId"));
 
-        try {
-            connection = DBConnection.getInstance().getConnection();
-            ObservableList<BorrowBook> borrowBooks = borrow_book_table.getItems();
-            selectAll = connection.prepareStatement("select * from borrow_detail");
-            selectMemberId = connection.prepareStatement("select name from member_detail where id=?");
-            selectBookDetails = connection.prepareStatement("select title,status from book_detail where id=?");
-            table = connection.prepareStatement("insert into borrow_detail values (?,?,?,?)");
-            delete = connection.prepareStatement("delete from borrow_detail where borrowId=?");
-            ResultSet resultSet = selectAll.executeQuery();
-            while (resultSet.next()) {
-                System.out.println("load");
-                borrowBooks.add(new BorrowBook(resultSet.getString(1),
-                        resultSet.getString(2),
-                        resultSet.getString(3),
-                        resultSet.getString(4)));
+            try {
+                connection = DBConnection.getInstance().getConnection();
+                ObservableList<BorrowBook> borrowBooks = borrow_book_table.getItems();
+                selectAll = connection.prepareStatement("SELECT * FROM borrow_detail");
+                selectMemberId = connection.prepareStatement("SELECT name FROM member_detail WHERE id=?");
+                selectBookDetails = connection.prepareStatement("SELECT title, status FROM book_detail WHERE id=?");
+                table = connection.prepareStatement("INSERT INTO borrow_detail VALUES (?,?,?,?)");
+                delete = connection.prepareStatement("DELETE FROM borrow_detail WHERE borrowId=?");
 
+                // Load borrow details
+                ResultSet resultSet = selectAll.executeQuery();
+                while (resultSet.next()) {
+                    System.out.println("load");
+                    borrowBooks.add(new BorrowBook(resultSet.getString(1),
+                            resultSet.getString(2),
+                            resultSet.getString(3),
+                            resultSet.getString(4)));
+                }
+                borrow_book_table.setItems(borrowBooks);
+                member_borrow_id.getItems().clear();
+
+                // Load member IDs
+                ObservableList cmbmembers = member_borrow_id.getItems();
+                ResultSet result = connection.prepareStatement("SELECT id FROM member_detail").executeQuery();
+                while (result.next()) {
+                    cmbmembers.add(result.getString(1));
+                }
+                book_id.getItems().clear();
+
+                // Load book IDs
+                ObservableList cmbbooks = book_id.getItems();
+                ResultSet resultSet1 = connection.prepareStatement("SELECT id FROM book_detail").executeQuery();
+                while (resultSet1.next()) {
+                    cmbbooks.add(resultSet1.getString(1));
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
 
             }
-            borrow_book_table.setItems(borrowBooks);
-            member_borrow_id.getItems().clear();
-            ObservableList membersBorrowId = member_borrow_id.getItems();
-            String sql = "select id from  member_detail";
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            ResultSet result = preparedStatement.executeQuery();
-            while (result.next()) {
-                membersBorrowId.add(result.getString(1));
-            }
 
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        member_borrow_id.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
-            @Override
-            public void changed(ObservableValue
-                                        observableValue, Object oldValue, Object newValue) {
-                if (member_borrow_id.getSelectionModel().getSelectedItem() != null) {
-                    Object selectedItem = member_borrow_id.getSelectionModel().getSelectedItem();
-
-                    if (selectedItem.equals(null) || member_borrow_id.getSelectionModel().isEmpty()) {
-                        return;
-                    }
+            // Member ID selection listener
+            member_borrow_id.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+                if (newValue != null) {
                     try {
-                        selectMemberId.setString(1, selectedItem.toString());
+                        selectMemberId.setString(1, newValue.toString());
                         ResultSet resultSet = selectMemberId.executeQuery();
                         if (resultSet.next()) {
                             text_name.setText(resultSet.getString(1));
                         }
                     } catch (SQLException e) {
                         e.printStackTrace();
+                        // Handle error
                     }
                 }
+            });
 
-            }
-        });
-        book_id.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observableValue, Object oldValue, Object newValue) {
-                if (book_id.getSelectionModel().getSelectedItem() != null) {
-                    Object selectedIem = book_id.getSelectionModel().getSelectedItem();
+            // Book ID selection listener
+            book_id.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+                if (newValue != null) {
                     try {
                         text_title.clear();
-                        selectBookDetails.setString(1, selectedIem.toString());
+                        selectBookDetails.setString(1, newValue.toString());
                         ResultSet resultSet = selectBookDetails.executeQuery();
                         if (resultSet.next()) {
                             if (resultSet.getString(2).equals("Available")) {
                                 text_title.setText(resultSet.getString(1));
                             } else {
-                                Alert alert = new Alert(Alert.AlertType.ERROR, "this book isn't available!", ButtonType.OK);
-                                Optional<ButtonType> buttonType = alert.showAndWait();
+                                Alert alert = new Alert(Alert.AlertType.ERROR, "This book isn't available!", ButtonType.OK);
+                                alert.showAndWait();
                             }
                         }
-
                     } catch (SQLException e) {
                         e.printStackTrace();
+                        // Handle error
                     }
                 }
-
-            }
-        });
-
-    }
+            });
+        }
 
 
-    public void new_action(ActionEvent actionEvent) throws SQLException {
+
+        public void new_action(ActionEvent actionEvent) throws SQLException {
         text_title.clear();
         text_name.clear();
         member_borrow_id.getSelectionModel().clearSelection();
@@ -184,7 +180,7 @@ public class BookBorrowController {
     public void add_Action(ActionEvent actionEvent) {
         ObservableList<BorrowBook> borrowBooks = FXCollections.observableList(DB.borrowBooks);
         ObservableList<Book> books = FXCollections.observableList(DB.books);
-        if (text_borrow_id.getText().isEmpty() || book_id.getSelectionModel().getSelectedItem().equals(null) || member_borrow_id.getSelectionModel().getSelectedItem().equals(null) || text_borrow_date.getValue().toString().equals(null)) {
+        if (text_borrow_id.getText().isEmpty() || book_id.getSelectionModel().getSelectedItem()==null || member_borrow_id.getSelectionModel().getSelectedItem()==null || text_borrow_date.getValue()==null) {
 
             Alert alert = new Alert(Alert.AlertType.ERROR, "please fill your details", ButtonType.OK);
             Optional<ButtonType> buttonType = alert.showAndWait();
@@ -204,7 +200,7 @@ public class BookBorrowController {
                     String sql = "update book_detail set status=? where id=?";
                     PreparedStatement preparedStatement = connection.prepareStatement(sql);
                     String id = (String) book_id.getSelectionModel().getSelectedItem();
-                    preparedStatement.setString(1, "Unavailable");
+                    preparedStatement.setString(1, "unAvailable");
                     preparedStatement.setString(2, id);
                     int affected = preparedStatement.executeUpdate();
                     if (affected > 0) {
@@ -243,9 +239,10 @@ public class BookBorrowController {
                 String sql = "update book_detail set status=? where id =?";
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
                 String id = (String) book_id.getSelectionModel().getSelectedItem();
-                preparedStatement.setString(1, "available");
+                preparedStatement.setString(1, "Available");
                 preparedStatement.setString(2, id);
                 preparedStatement.executeUpdate();
+
                 Alert alert = new Alert(Alert.AlertType.INFORMATION, "record deleted!", ButtonType.OK);
                 Optional<ButtonType> buttonType = alert.showAndWait();
             } catch (SQLException e) {

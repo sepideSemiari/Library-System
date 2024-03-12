@@ -126,7 +126,7 @@ public class BooksController {
 
     public void button_new(ActionEvent actionEvent) throws SQLException {
         btn_add.setText("Add");
-        text_book_status.setText("available");
+        text_book_status.setText("Available");
         text_book_status.setDisable(true);
         text_book_id.setDisable(false);
         text_book_author.clear();
