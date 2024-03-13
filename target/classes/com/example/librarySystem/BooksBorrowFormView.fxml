@@ -50,7 +50,7 @@
 
 
         <Button layoutX="125.0" layoutY="323.0" onAction="#new_action" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #ded3a9;" text="+New " />
-        <Button layoutX="247.0" layoutY="323.0" onAction="#add_Action" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #b7aeae;" text="Add" />
+        <Button fx:id="add_Action" layoutX="247.0" layoutY="323.0" onAction="#add_Action" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #b7aeae;" text="Add" />
         <Button layoutX="379.0" layoutY="323.0" onAction="#delete_Action" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #ded3a9;" text="Delete" />
 
         <TableView fx:id="borrow_book_table" layoutX="69.0" layoutY="369.0" prefHeight="200.0" prefWidth="465.0">
