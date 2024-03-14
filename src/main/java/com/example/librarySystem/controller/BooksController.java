@@ -188,7 +188,7 @@ public class BooksController {
                 System.out.println("Error");
             }
         }else {
-            if (btn_add.getText().equals("Update")){
+            if (btn_add.getText().equals("update")){
                 for (int i=0;i<books.size();i++){
                     if (text_book_id.getText().equals(books.get(i).getId())){
                         updateQuery.setString(1,text_book_title.getText());

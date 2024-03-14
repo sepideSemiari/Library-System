@@ -195,17 +195,17 @@ public class MemberController {
                 for (int i = 0; i < members.size(); i++) {
                     if (member_id.getText().equals(members.get(i).getId())) {
                         try {
-                            updateQuery.setString(1, member_id.getText());
-                            updateQuery.setString(2, member_name.getText());
-                            updateQuery.setString(3, member_address.getText());
-                            updateQuery.setString(4, member_number.getText());
-                            int values = updateQuery.executeUpdate();
-                            if (values > 0) {
-                                Alert alert = new Alert(Alert.AlertType.INFORMATION, "record updated", ButtonType.OK);
-                                Optional<ButtonType> buttonType = alert.showAndWait();
+                            updateQuery.setString(1, member_name.getText());
+                            updateQuery.setString(2, member_address.getText());
+                            updateQuery.setString(3, member_number.getText());
+                            updateQuery.setString(4, member_id.getText());
+                            int affected = updateQuery.executeUpdate();
+                            if (affected > 0) {
+                                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Record updated!!", ButtonType.OK);
 
+                                Optional<ButtonType> buttonType = alert.showAndWait();
                             } else {
-                                Alert alert = new Alert(Alert.AlertType.ERROR, "update error", ButtonType.OK);
+                                Alert alert = new Alert(Alert.AlertType.ERROR, "update error!", ButtonType.OK);
                                 Optional<ButtonType> buttonType = alert.showAndWait();
                             }
                         } catch (SQLException e) {
@@ -215,8 +215,6 @@ public class MemberController {
                 }
             }
             member_table.setItems(members);
-
-
         }
         try {
             member_table.getItems().clear();
@@ -224,6 +222,8 @@ public class MemberController {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
+
     }
 
     public void btn_delete(ActionEvent actionEvent) throws SQLException {
