@@ -42,11 +42,11 @@ public class DBConnection {
                         ");\n" +
                         "\n" +
                         "CREATE TABLE return_detail (\n" +
-                        "  returnId varchar(10) primary key ,\n" +
+                        "  returnId int not null primary key ,\n" +
                         "  borrowDate date NOT NULL,\n" +
                         "  returnedDate date DEFAULT NULL,\n" +
                         "  fine int DEFAULT NULL,\n" +
-                        "  borrowId varchar,\n" +
+                        "  borrowId int,\n" +
                         "  CONSTRAINT fk_borrow FOREIGN KEY (borrowId) REFERENCES borrow_detail (borrowId)" +
                         ");\n";
                 pstm = connection.prepareStatement(sql);

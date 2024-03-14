@@ -10,7 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BookReturn {
-    private int id;
+    private String id;
     private String borrowedDate;
     private String returnedDate;
     private float fine;

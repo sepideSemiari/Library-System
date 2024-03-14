@@ -71,7 +71,7 @@ public class BookBorrowController {
             selectMemberId = connection.prepareStatement("SELECT name FROM member_detail WHERE id=?");
             selectBookDetails = connection.prepareStatement("SELECT title, status FROM book_detail WHERE id=?");
             table = connection.prepareStatement("INSERT INTO borrow_detail  VALUES (?,?,?,?)");
-            delete = connection.prepareStatement("DELETE FROM borrow_detail WHERE borrowId=?");
+            delete = connection.prepareStatement("DELETE FROM borrow_detail WHERE borrowid=?");
 
             // Load borrow details
             ResultSet resultSet = selectAll.executeQuery();
@@ -154,7 +154,7 @@ public class BookBorrowController {
         book_id.getSelectionModel().clearSelection();
         text_borrow_date.setPromptText("borrow date");
 
-        String sql = "select borrowId from borrow_detail";
+        String sql = "select borrowid from borrow_detail";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
         String ids = null;

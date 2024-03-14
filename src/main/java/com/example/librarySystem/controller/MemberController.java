@@ -192,8 +192,8 @@ public class MemberController {
             }
         } else {
             if (btn_add.getText().equals("Update")) {
-                for (Member member : members) {
-                    if (member_id.getText().equals(member.getId())) {
+                for (int i = 0; i < members.size(); i++) {
+                    if (member_id.getText().equals(members.get(i).getId())) {
                         try {
                             updateQuery.setString(1, member_id.getText());
                             updateQuery.setString(2, member_name.getText());
@@ -203,6 +203,7 @@ public class MemberController {
                             if (values > 0) {
                                 Alert alert = new Alert(Alert.AlertType.INFORMATION, "record updated", ButtonType.OK);
                                 Optional<ButtonType> buttonType = alert.showAndWait();
+
                             } else {
                                 Alert alert = new Alert(Alert.AlertType.ERROR, "update error", ButtonType.OK);
                                 Optional<ButtonType> buttonType = alert.showAndWait();
@@ -212,8 +213,9 @@ public class MemberController {
                         }
                     }
                 }
-                member_table.setItems(members);
             }
+            member_table.setItems(members);
+
 
         }
         try {
