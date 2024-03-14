@@ -149,8 +149,8 @@ public class BookReturnController {
         String sql = "INSERT INTO return_detail VALUES (?,?,?,?)";
         PreparedStatement pstm = connection.prepareStatement(sql);
         pstm.setString(1, (String) combo_borrow_id.getSelectionModel().getSelectedItem());
-        pstm.setString(2, text_borrow_date.getText());
-        pstm.setString(3, text_return_date.getValue().toString());
+        pstm.setDate(2, Date.valueOf(text_borrow_date.getText()));
+        pstm.setDate(3, Date.valueOf(text_return_date.getValue().toString()));
         pstm.setString(4, text_fine.getText());
         int affectedRows = pstm.executeUpdate();
 

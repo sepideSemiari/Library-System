@@ -57,8 +57,8 @@
             <columns>
                 <TableColumn fx:id="borrow_id" prefWidth="75.0" text="ID" />
                 <TableColumn fx:id="borrow_date" prefWidth="93.0" text="Date" />
-                <TableColumn fx:id="member_name" prefWidth="195.0" text="Member Name" />
-                <TableColumn fx:id="member_id" prefWidth="100.0" text="Member ID" />
+                <TableColumn fx:id="member_name" prefWidth="195.0" text="Member ID" />
+                <TableColumn fx:id="member_id" prefWidth="100.0" text="Book ID" />
             </columns>
             <effect>
                 <InnerShadow>
