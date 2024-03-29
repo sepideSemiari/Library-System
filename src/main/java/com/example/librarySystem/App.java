@@ -14,7 +14,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(new File("E:\\javaCode\\Project\\LibrarySystem\\LibrarySystem\\src\\main\\resources\\com\\example\\librarySystem\\HomeFormView.fxml").toURI().toURL());
+        FXMLLoader fxmlLoader = new FXMLLoader(new File("E:\\javaCode\\Project\\LibrarySystem\\LibrarySystem\\src\\main\\resources\\com\\example\\librarySystem\\view\\HomeFormView.fxml").toURI().toURL());
         Parent root=fxmlLoader.load();
         Scene scene=new Scene(root);
         stage.setScene(scene);

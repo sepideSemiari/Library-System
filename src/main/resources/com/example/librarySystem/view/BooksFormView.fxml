@@ -27,14 +27,14 @@
 
         <ImageView fx:id="image_back" fitHeight="40.0" fitWidth="40.0" layoutX="515.0" layoutY="12.0" onMouseClicked="#image_back" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../../../java/com/example/librarySystem/images/back.png" />
+                <Image url="@../../../../../java/com/example/librarySystem/images/back.png" />
             </image>
         </ImageView>
 
 
         <ImageView fitHeight="77.0" fitWidth="89.0" layoutX="149.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../../../java/com/example/librarySystem/images/books.png" />
+                <Image url="@../../../../../java/com/example/librarySystem/images/books.png" />
             </image>
         </ImageView>
 

@@ -252,7 +252,7 @@ public class MemberController {
 
 
     public void image_back(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(new File("E:\\javaCode\\Project\\LibrarySystem\\LibrarySystem\\src\\main\\resources\\com\\example\\librarySystem\\HomeFormView.fxml").toURL());
+        Parent root = FXMLLoader.load(new File("E:\\javaCode\\Project\\LibrarySystem\\LibrarySystem\\src\\main\\resources\\com\\example\\librarySystem\\view\\HomeFormView.fxml").toURL());
         Scene scene = new Scene(root);
         Stage primaryStage = (Stage) this.root.getScene().getWindow();
         primaryStage.setScene(scene);

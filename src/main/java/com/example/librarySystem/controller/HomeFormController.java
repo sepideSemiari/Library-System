@@ -24,7 +24,7 @@ public class HomeFormController {
     @FXML
     public ImageView books;
     @FXML
-    public ImageView issue;
+    public ImageView borrow;
     @FXML
     public ImageView books_return;
     @FXML
@@ -42,19 +42,19 @@ public class HomeFormController {
 
             switch (icon.getId()) {
                 case "member":
-                    root = FXMLLoader.load(new File("E:\\javaCode\\Project\\LibrarySystem\\LibrarySystem\\src\\main\\resources\\com\\example\\librarySystem\\MembersFormView.fxml").toURI().toURL());
+                    root = FXMLLoader.load(new File("E:\\javaCode\\Project\\LibrarySystem\\LibrarySystem\\src\\main\\resources\\com\\example\\librarySystem\\view\\MembersFormView.fxml").toURI().toURL());
                     break;
                 case "books":
-                    root = FXMLLoader.load(new File("E:\\javaCode\\Project\\LibrarySystem\\LibrarySystem\\src\\main\\resources\\com\\example\\librarySystem\\BooksFormView.fxml").toURI().toURL());
+                    root = FXMLLoader.load(new File("E:\\javaCode\\Project\\LibrarySystem\\LibrarySystem\\src\\main\\resources\\com\\example\\librarySystem\\view\\BooksFormView.fxml").toURI().toURL());
                     break;
                 case "borrow":
-                    root = FXMLLoader.load(new File("E:\\javaCode\\Project\\LibrarySystem\\LibrarySystem\\src\\main\\resources\\com\\example\\librarySystem\\BooksBorrowFormView.fxml").toURI().toURL());
+                    root = FXMLLoader.load(new File("E:\\javaCode\\Project\\LibrarySystem\\LibrarySystem\\src\\main\\resources\\com\\example\\librarySystem\\view\\BooksBorrowFormView.fxml").toURI().toURL());
                     break;
                 case "books_return":
-                    root = FXMLLoader.load(new File("E:\\javaCode\\Project\\LibrarySystem\\LibrarySystem\\src\\main\\resources\\com\\example\\librarySystem\\BookReturnFormView.fxml").toURI().toURL());
+                    root = FXMLLoader.load(new File("E:\\javaCode\\Project\\LibrarySystem\\LibrarySystem\\src\\main\\resources\\com\\example\\librarySystem\\view\\BookReturnFormView.fxml").toURI().toURL());
                     break;
                 case "books_search":
-                    root = FXMLLoader.load(new File("E:\\javaCode\\Project\\LibrarySystem\\LibrarySystem\\src\\main\\resources\\com\\example\\librarySystem\\BookSearchFormView.fxml").toURI().toURL());
+                    root = FXMLLoader.load(new File("E:\\javaCode\\Project\\LibrarySystem\\LibrarySystem\\src\\main\\resources\\com\\example\\librarySystem\\view\\BookSearchFormView.fxml").toURI().toURL());
                     break;
             }
 

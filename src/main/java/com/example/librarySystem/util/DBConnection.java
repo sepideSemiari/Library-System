@@ -41,7 +41,7 @@ public class DBConnection {
                         " returnId varchar not null primary key ,\n" +
                         " borrowDate date NOT NULL,\n" +
                         " returnedDate date DEFAULT NULL,\n" +
-                        " fine int DEFAULT NULL,\n" +
+                        " fine float DEFAULT NULL,\n" +
                         " borrowId varchar,\n" +
                         " CONSTRAINT fk_borrow FOREIGN KEY (borrowId) REFERENCES borrow_detail (borrowId)" +
                         ");\n";

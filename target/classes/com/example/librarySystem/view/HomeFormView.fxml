@@ -18,31 +18,31 @@
 
         <ImageView fx:id="member" fitHeight="101.0" fitWidth="131.0" layoutX="106.0" layoutY="78.0" onMouseClicked="#navigate" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../../../java/com/example/librarySystem/images/member.png" />
+                <Image url="@../../../../../java/com/example/librarySystem/images/member.png" />
             </image>
         </ImageView>
 
         <ImageView fx:id="books" fitHeight="100.0" fitWidth="100.0" layoutX="107.0" layoutY="346.0" onMouseClicked="#navigate" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../../../java/com/example/librarySystem/images/books.png" />
+                <Image url="@../../../../../java/com/example/librarySystem/images/books.png" />
             </image>
         </ImageView>
 
         <ImageView fx:id="borrow" fitHeight="116.0" fitWidth="127.0" layoutX="379.0" layoutY="78.0" onMouseClicked="#navigate" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../../../java/com/example/librarySystem/images/borrow.png" />
+                <Image url="@../../../../../java/com/example/librarySystem/images/borrow.png" />
             </image>
         </ImageView>
 
         <ImageView fx:id="books_return" fitHeight="100.0" fitWidth="100.0" layoutX="395.0" layoutY="355.0" onMouseClicked="#navigate" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../../../java/com/example/librarySystem/images/return.png" />
+                <Image url="@../../../../../java/com/example/librarySystem/images/return.png" />
             </image>
         </ImageView>
 
         <ImageView fx:id="books_search" fitHeight="100.0" fitWidth="100.0" layoutX="241.0" layoutY="201.0" onMouseClicked="#navigate" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../../../java/com/example/librarySystem/images/search.png" />
+                <Image url="@../../../../../java/com/example/librarySystem/images/search.png" />
             </image>
         </ImageView>
 

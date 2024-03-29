@@ -23,7 +23,7 @@
         <Pane layoutX="588.0" layoutY="1.0" prefHeight="600.0" prefWidth="12.0" style="-fx-background-color: #6f7275;" />
         <ImageView fitHeight="86.0" fitWidth="92.0" layoutX="145.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../../../java/com/example/librarySystem/images/member.png" />
+                <Image url="@../../../../../java/com/example/librarySystem/images/member.png" />
             </image>
         </ImageView>
 
@@ -56,7 +56,7 @@
 
         <ImageView fx:id="image_back" fitHeight="40.0" fitWidth="40.0" layoutX="515.0" layoutY="12.0" onMouseClicked="#image_back" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../../../java/com/example/librarySystem/images/back.png" />
+                <Image url="@../../../../../java/com/example/librarySystem/images/back.png" />
             </image>
         </ImageView>
 

@@ -131,7 +131,7 @@ public class BookReturnController {
     }
 
     //btn add action
-    public void button_add_inventory(ActionEvent actionEvent) throws SQLException {
+    public void button_add(ActionEvent actionEvent) throws SQLException {
         if (combo_borrow_id.getSelectionModel().isEmpty() ||
                 text_borrow_date.getText().isEmpty() ||
                 text_return_date.getValue() == null ||
@@ -151,7 +151,7 @@ public class BookReturnController {
         pstm.setString(1, (String) combo_borrow_id.getSelectionModel().getSelectedItem());
         pstm.setDate(2, Date.valueOf(text_borrow_date.getText()));
         pstm.setDate(3, Date.valueOf(text_return_date.getValue().toString()));
-        pstm.setString(4, text_fine.getText());
+        pstm.setDouble(4, Double.parseDouble(text_fine.getText()));
         int affectedRows = pstm.executeUpdate();
 
         if (affectedRows > 0) {
@@ -175,7 +175,7 @@ public class BookReturnController {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION,
                         "Status updated.",
                         ButtonType.OK);
-                Optional<ButtonType> buttonType = alert.showAndWait();
+                alert.showAndWait();
             }
         } else {
             System.out.println("Something went wrong");
@@ -195,7 +195,7 @@ public class BookReturnController {
     }
 
     public void image_back(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(new File("E:\\javaCode\\Project\\LibrarySystem\\LibrarySystem\\src\\main\\resources\\com\\example\\librarySystem\\HomeFormView.fxml").toURL());
+        Parent root = FXMLLoader.load(new File("E:\\javaCode\\Project\\LibrarySystem\\LibrarySystem\\src\\main\\resources\\com\\example\\librarySystem\\view\\HomeFormView.fxml").toURL());
         Scene scene = new Scene(root);
         Stage primaryStage = (Stage) this.Return_root.getScene().getWindow();
         primaryStage.setScene(scene);
