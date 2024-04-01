@@ -70,7 +70,7 @@ public class MemberController {
         member_table.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
         member_table.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("name"));
         member_table.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("address"));
-        member_table.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("concat"));
+        member_table.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("contact"));
 
         Class.forName("org.postgresql.Driver");
         try {
